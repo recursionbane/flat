@@ -1,5 +1,3 @@
-var isBuffer = require('is-buffer')
-
 var flat = module.exports = flatten
 flatten.flatten = flatten
 flatten.unflatten = unflatten
@@ -17,7 +15,8 @@ function flatten(target, opts) {
       var value = object[key]
       var isarray = opts.safe && Array.isArray(value)
       var type = Object.prototype.toString.call(value)
-      var isbuffer = isBuffer(value)
+      // var isbuffer = isBuffer(value)
+      var isbuffer = false // Turning off buffer support to reduce dependencies
       var isobject = (
         type === "[object Object]" ||
         type === "[object Array]"
@@ -48,7 +47,8 @@ function unflatten(target, opts) {
   var overwrite = opts.overwrite || false
   var result = {}
 
-  var isbuffer = isBuffer(target)
+  // var isbuffer = isBuffer(target)
+  var isbuffer = false // Turning off buffer support to reduce dependencies
   if (isbuffer || Object.prototype.toString.call(target) !== '[object Object]') {
     return target
   }
