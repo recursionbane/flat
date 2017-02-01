@@ -2,6 +2,7 @@
 
 Take a nested Javascript object and flatten it, or unflatten an object with
 delimited keys.
+This fork removes support for buffers, thereby removing all external dependencies.
 
 ## Installation
 
